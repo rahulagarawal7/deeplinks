@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Opening App...</title>
+    <script>
+      // Get ?campaignId=XXXX
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("campaignId");
+
+      // Create the deep link
+      const deepLink = `review2grab://campaigns/${id}`;
+
+      // Trigger deep link
+      window.location.href = deepLink;
+
+      // If app is NOT installed → fallback after 1.5 sec
+      setTimeout(() => {
+        window.location.href =
+          "https://play.google.com/store/apps/details?id=com.review2grab";
+      }, 1500);
+    </script>
+  </head>
+  <body>
+    <p>Opening task2grab app…</p>
+  </body>
+</html>
